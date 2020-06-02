@@ -53,7 +53,7 @@ public class UserDao {
         }
     }
 
-    public UserEntity userDelete(UserEntity user){
+    public UserEntity deleteUser(UserEntity user){
         try{
             entityManager.remove(user);
             return user;

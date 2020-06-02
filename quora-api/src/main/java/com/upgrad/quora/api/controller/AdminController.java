@@ -19,9 +19,9 @@ public class AdminController {
     private AdminBusinessService adminBusinessService;
 
     @RequestMapping(method = RequestMethod.DELETE, path = "/admin/user/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<UserDeleteResponse> userDelete(@PathVariable("userId") final String userId, @RequestHeader("authorization")final String authorization) throws AuthorizationFailedException, UserNotFoundException {
+    public ResponseEntity<UserDeleteResponse> deleteUser(@PathVariable("userId") final String userId, @RequestHeader("authorization")final String authorization) throws AuthorizationFailedException, UserNotFoundException {
 
-        final UserEntity userEntity = adminBusinessService.userDelete(userId,authorization);
+        final UserEntity userEntity = adminBusinessService.deleteUser(userId,authorization);
 
         return new ResponseEntity<UserDeleteResponse>(new UserDeleteResponse().id(userEntity.getUuid()).status("USER SUCCESSFULLY DELETED"), HttpStatus.OK);
     }

@@ -17,7 +17,7 @@ public class AdminBusinessService {
     private UserDao userDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public UserEntity userDelete(final String userId, final String authToken) throws AuthorizationFailedException, UserNotFoundException {
+    public UserEntity deleteUser(final String userId, final String authToken) throws AuthorizationFailedException, UserNotFoundException {
 
         final UserAuthTokenEntity userAuthToken = userDao.getUserAuthToken(authToken);
 
@@ -41,7 +41,7 @@ public class AdminBusinessService {
                 throw new UserNotFoundException("USR-001","User with entered uuid to be deleted does not exist");
             }
 
-            return userDao.userDelete(userEntity);
+            return userDao.deleteUser(userEntity);
         }
     }
 
